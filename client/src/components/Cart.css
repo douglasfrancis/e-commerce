@@ -1,0 +1,140 @@
+#cart-page{
+    background-color: #f6f6f6;
+    height: 100vh;
+    width: 100vw;
+    padding: 3rem;
+    z-index: 1;
+}   
+
+#cart-page h2{
+    color: #33343a;
+    text-align: left;
+}
+
+#card-container h2{
+    color: white;
+}
+
+#card-container{
+    
+    height: 90vh;
+    width: 30vw;
+    position: absolute;
+    top: 5vh;
+    right: 5vh !important;
+    left: auto !important;
+    padding: 2rem;
+    border-radius: 5px;
+    background: rgb(51,52,58);
+    background: linear-gradient(0deg, rgba(51,52,58,1) 50%, rgba(65,66,74,1) 100%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0 ,0.19), 0 6px 6px rgba(0, 0, 0, 0.23);;
+}
+
+.card-input{
+    border: unset;
+    border-bottom: 1px solid #d2d6de;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 2rem auto;
+    color: white;
+    font-size: 100%;
+}
+
+#card-num{
+    letter-spacing: 0.2rem;
+
+}
+.card-label{
+    color: #8e8e97;
+}
+
+#card-btn{
+    background-color: #2d7aed;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: unset;
+    width: 90%;
+    height: 50px;
+    margin: 1rem auto;
+    font-weight: bold;
+    position: relative;
+    bottom: -5rem;
+    transition: 1s;
+}
+#card-btn:hover{
+    background-color: #2d7aedb7;
+    cursor: pointer;
+}
+
+a{
+   color: #2d7aed;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.line-item{
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    border-bottom: 1px solid #dcdce0;
+    padding: 2rem 0;
+}
+
+#subtotal{
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+}
+#subtotal h2, p{
+    display: inline-flex;
+}
+
+.set-qty{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    display: inline-flex;
+    padding: 0 0.5rem ;
+}
+
+.set-qty:hover {
+    cursor: pointer;
+}
+
+.line-img{
+    height: 100px;
+}
+
+#processor{
+    z-index: 999;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0 ,0.19), 0 6px 6px rgba(0, 0, 0, 0.23);;
+    height: 40vh;
+    width: 40vw;
+    position: absolute;
+    top: 20vh;
+    left: 30vw;
+    text-align: center;
+    padding: 3rem;
+    
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #2d7aed; 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 1rem auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -1,0 +1,17 @@
+.error-msg{
+    width: 60%;
+    border: 1px solid red;
+    color: red;
+    background-color: pink;
+    z-index: 999;
+    padding: 1rem;
+    display: fixed;
+    
+}
+
+#err-close{
+    float: right;
+}
+#err-close:hover{
+    cursor: pointer;
+}
