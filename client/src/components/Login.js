@@ -2,6 +2,7 @@ import React from 'react';
 import './Auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 export default function Login() {
     return (
@@ -20,10 +21,12 @@ export default function Login() {
                 <input id='auth-check' type="checkbox" />
                 <label htmlFor='auth-check'>Keep me signed in</label>
 
-                <button className='auth-btn'>Login</button>
+                <Link to='/'><button className='auth-btn'>Login</button></Link>
                 <br/><br/>
                 <p className='auth-p'>I forgot my password</p>
                 <p className='auth-p'>Resend verification email</p>
+
+                <p>Don't have an account? <Link to='/register'>Register</Link></p>
             </form>
         </div>
     )

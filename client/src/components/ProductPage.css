@@ -80,3 +80,26 @@ svg{
     display: block;
     margin-bottom: 2rem;
 }
+
+.choices {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    margin: 0.5rem;
+}
+
+.choices:hover{
+    cursor: pointer;
+}
+
+#dark-choice{
+    background-color: #4a3e40 ;
+    display: inline-flex;
+
+}
+
+#white-choice{
+    background-color: #f0e8bb ;
+    display: inline-flex;
+}

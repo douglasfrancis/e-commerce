@@ -1,30 +1,81 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img1 from '../images/img1.png';
 import img2 from '../images/img2.png';
 import img3 from '../images/img3.jpg';
+import white1 from '../images/white1.png';
+import white2 from '../images/white2.png';
+import white3 from '../images/white3.jpg';
 import './ProductPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import ErrorMsg from './ErrorMsg';
+
+const dark = {
+    name: 'G&B ORGANIC DARK 70% 90G BAR',
+    price: 2.00,
+    images: {
+        img1: img1,
+        img2: img2,
+        img3: img3},
+    description: 'The dark one. The complex taste of simplicity. Just let a single square rest on your tongue and see how many flavours you can pick out. Do you get a rich nuttiness? Roasted coffee? Savoury notes? Bitter cherry? Sweet vanilla? Our original dark chocolate may look simple but it\'s anything but.'
+}
+
+const white = {
+    name: 'G&B ORGANIC WHITE 90G BAR',
+    price: 2.00,
+    images: {
+        img1: white1,
+        img2: white2,
+        img3: white3},
+    description: 'White: The black sheep of the group. The Vanilla one. Cocoa butter, pressed from crushed cocoa beans, and organic whole milk give our white chocolate its wonderfully smooth texture. Then, we blend in Madagascan vanilla, which adds a deeper flavour, which, we think, white chocolate rarely achieves.'
+}
 
 export default function ProductPage() {
-
-    const [mainImg, setMainImg] = useState(img1);
+    
     const [added, setAdded] = useState(false);
     const [qty, setQty] = useState(1);
+    const [err, setErr] = useState(null);
+    const [colour, setColour] = useState(white);
+    const [mainImg, setMainImg] = useState(white.images.img1);
 
-    const product = {
-        name: 'G&B ORGANIC DARK 70% 90G BAR',
-        price: 2.00,
-        qty: qty
-    }
+    useEffect(()=>{
+        changeDark();
+        changeLight();
+    },[]);
+
+    function changeDark() {
+        setColour(dark);
+        setMainImg(dark.images.img1);
+    };
+
+    function changeLight() {
+        setColour(white);
+        setMainImg(white.images.img1);
+    };
+
+    function increase() {
+        if(qty < 10){
+        setQty(qty + 1)
+        } else {
+        setErr("Maximum quantity is 10")
+        }
+    };
+
+    function decrease() {
+        if(qty >1){
+            setQty(qty - 1)
+            } else {
+            setErr("Minimum quantity is 1")
+            }
+    };
+
     return (
         <div id='product-page'>
             <div id='thumb-images'>
-                <img className='thumb-img' src={img1} onClick={()=> setMainImg(img1)}/>
-                <img className='thumb-img' src={img2} onClick={()=> setMainImg(img2)}/>
-                <img className='thumb-img' src={img3} onClick={()=> setMainImg(img3)}/>
-
+                <img className='thumb-img' src={colour.images.img1} onClick={()=> setMainImg(colour.images.img1)}/>
+                <img className='thumb-img' src={colour.images.img2} onClick={()=> setMainImg(colour.images.img2)}/>
+                <img className='thumb-img' src={colour.images.img3} onClick={()=> setMainImg(colour.images.img3)}/>
             </div>
                 
             <div id='main-container'>
@@ -35,17 +86,30 @@ export default function ProductPage() {
                 <div id='icons'>
                 <Link to='/login'><FontAwesomeIcon icon={faSignOutAlt} /></Link>
                 <Link to='/cart'><FontAwesomeIcon icon={faShoppingCart} /></Link> 
-                
                 </div>
 
+                <h2>{colour.name}</h2>
+                <h2>£{colour.price.toFixed(2)}</h2>
 
-                <h2>{product.name}</h2>
-                <h2>£{product.price.toFixed(2)}</h2>
+                <div id='choices'>
+                    <div className='choices' id='dark-choice' onClick={changeDark}>
+                    </div>
+
+                    <div className='choices' id='white-choice' onClick={changeLight}>
+                    </div>
+                </div>
+
+                <div>
+                    <p className='set-qty' onClick={decrease}>-</p>
+                    <input type='number' disabled value={qty} onChange={(e)=>{setQty(e.target.value)} }/>
+                    <p className='set-qty' onClick={increase}>+</p>
+                </div>
+
                 {added ? <h2>Added to Basket</h2> : <button onClick={()=>setAdded(true)} id='cart-btn' className='product-btn'>Add to Cart</button>}
-                
+
                 <Link to='/cart'><button id='basket-btn' className='product-btn'>View Basket</button></Link>
 
-                <p id='description'>The dark one. The complex taste of simplicity. Just let a single square rest on your tongue and see how many flavours you can pick out. Do you get a rich nuttiness? Roasted coffee? Savoury notes? Bitter cherry? Sweet vanilla? Our original dark chocolate may look simple but it's anything but.</p>
+                <p id='description'>{colour.description}</p>
             </div>
         </div>
     )

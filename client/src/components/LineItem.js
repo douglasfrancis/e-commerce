@@ -6,7 +6,7 @@ import img from '../images/img1.png';
 export default function LineItem() {
     const [qty, setQty] = useState(1)
     const [err, setErr] = useState(null)
-    const [linePrice, setLinePrice] = useState(0)
+    const [linePrice, setLinePrice] = useState(2)
 
     
     function increase() {

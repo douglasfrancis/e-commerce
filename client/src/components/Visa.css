@@ -1,0 +1,41 @@
+#visa-container{
+    background-color: #8e8e97;
+    width: 230px;
+    height: 125px;
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    left: -50px;
+}
+
+#visa-container img{
+   
+   height: 25%;
+   position: relative;
+   float: left;
+   
+}
+
+#visa-name{
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+}
+
+#visa-date{
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+}
+
+#visa-number{
+    position: absolute;
+    width: 80%;
+    text-align: center;
+    top: 45%;
+    left: 20%;
+    
+}
