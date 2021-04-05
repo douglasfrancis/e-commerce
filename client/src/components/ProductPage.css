@@ -85,9 +85,11 @@ svg{
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    display: flex;
+    display: inline-flex;
     margin: 0.5rem;
 }
+
+
 
 .choices:hover{
     cursor: pointer;

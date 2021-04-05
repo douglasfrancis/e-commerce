@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,6 +6,7 @@ import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import LineItem from './LineItem';
 import Visa from './Visa';
 import mastercard from '../images/mastercard.png';
+import { Context } from '../Context';
 
 export default function Cart() {
     const[cardName, setCardName] = useState("");
@@ -13,19 +14,18 @@ export default function Cart() {
     const[cardCVV, setCardCVV] = useState("");
     const[cardYear, setCardYear] = useState("yy");
     const[cardMonth, setCardMonth] = useState("mm");
-    const [cartItems, setCartItems] = useState([]);
+    const [cart, setCart, basketTotal] = useContext(Context);
     const [processing, setProcessing] = useState(false);
+
+    const totalPrice = cart.reduce((acc, curr)=> acc + curr.total, 0)
 
     function Processing(e) {
         e.preventDefault();
-
         setProcessing(true);
-
         setTimeout(clearProcessing, 5000);
       }
 
     function clearProcessing() {
-       
         setProcessing(false);
     };
 
@@ -38,9 +38,15 @@ export default function Cart() {
                 </div>}
 
             <h2>Shopping Cart</h2>
+            {console.log(cart)}
 
             <div id='item-list'>
-                <LineItem />
+
+                {cart.length> 0 && 
+                <LineItem item={cart[0]} />
+                    
+            }
+                
             </div>
 
             <div id='subtotal'>
@@ -49,7 +55,7 @@ export default function Cart() {
                 <Link to='/'><p>Continue shopping</p></Link>
                 </div>
             <div>
-                <p>subtotal</p><h2>£{cartItems.length < 1 ? <h2>-.--</h2> : <h2>Logic to Calculate</h2>}</h2>
+                <p>subtotal</p><h2>£{cart.length < 1 ? <h2>-.--</h2> : <h2>{totalPrice.toFixed(2)}</h2>}</h2>
             </div>
             </div>
 
