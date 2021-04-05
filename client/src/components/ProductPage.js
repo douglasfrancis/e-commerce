@@ -19,7 +19,8 @@ const database = [
         images: {
             img1: white1,
             img2: white2,
-            img3: white3},
+            img3: white3,
+            },
         description: 'White: The black sheep of the group. The Vanilla one. Cocoa butter, pressed from crushed cocoa beans, and organic whole milk give our white chocolate its wonderfully smooth texture. Then, we blend in Madagascan vanilla, which adds a deeper flavour, which, we think, white chocolate rarely achieves.'
     },
     {
@@ -29,7 +30,8 @@ const database = [
         images: {
             img1: img1,
             img2: img2,
-            img3: img3},
+            img3: img3,
+            },
         description: 'The dark one. The complex taste of simplicity. Just let a single square rest on your tongue and see how many flavours you can pick out. Do you get a rich nuttiness? Roasted coffee? Savoury notes? Bitter cherry? Sweet vanilla? Our original dark chocolate may look simple but it\'s anything but.'
     }
 ]

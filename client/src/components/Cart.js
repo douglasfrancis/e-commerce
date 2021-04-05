@@ -14,10 +14,11 @@ export default function Cart() {
     const[cardCVV, setCardCVV] = useState("");
     const[cardYear, setCardYear] = useState("yy");
     const[cardMonth, setCardMonth] = useState("mm");
-    const [cart, setCart, basketTotal] = useContext(Context);
+    const [cart, setCart] = useContext(Context);
     const [processing, setProcessing] = useState(false);
 
     const totalPrice = cart.reduce((acc, curr)=> acc + curr.total, 0)
+    const[subtotal, setSubtotal] = useState(totalPrice)
 
     function Processing(e) {
         e.preventDefault();
@@ -38,12 +39,12 @@ export default function Cart() {
                 </div>}
 
             <h2>Shopping Cart</h2>
-            {console.log(cart)}
+            
 
             <div id='item-list'>
 
                 {cart.length> 0 && 
-                <LineItem item={cart[0]} />
+                <LineItem item={cart[0]} subtotal={subtotal} setSubtotal={setSubtotal} />
                     
             }
                 
@@ -55,7 +56,7 @@ export default function Cart() {
                 <Link to='/'><p>Continue shopping</p></Link>
                 </div>
             <div>
-                <p>subtotal</p><h2>£{cart.length < 1 ? <h2>-.--</h2> : <h2>{totalPrice.toFixed(2)}</h2>}</h2>
+                <p>subtotal</p><h2>£{cart.length < 1 ? <h2>-.--</h2> : <h2>{subtotal.toFixed(2)}</h2>}</h2>
             </div>
             </div>
 
