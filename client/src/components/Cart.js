@@ -55,7 +55,7 @@ export default function Cart() {
                 <FontAwesomeIcon icon={faLongArrowAltLeft} />
                 <Link to='/'><p>Continue shopping</p></Link>
                 </div>
-            <div>
+            <div id='sub-footer'>
                 <p>subtotal</p><h2>£{cart.length < 1 ? <h2>-.--</h2> : <h2>{subtotal.toFixed(2)}</h2>}</h2>
             </div>
             </div>
@@ -73,11 +73,9 @@ export default function Cart() {
                 <input className='card-input' placeholder="Jane Smith" value={cardName} onChange={(e)=> setCardName(e.target.value)}/>
 
                 <label  className='card-label'>Card Number</label>
-                <input id='card-num' maxlength="16" className='card-input' placeholder="XXXX-XXXX-XXXX-XXXX" value={cardNumber} onChange={(e)=> setCardNumber(e.target.value)} />
+                <input  id='card-num' maxlength="16" className='card-input' placeholder="XXXX-XXXX-XXXX-XXXX" value={cardNumber} onChange={(e)=> setCardNumber(e.target.value)} />
 
-
-                <label className='card-label'>CVV</label>
-                <input className='card-input' maxlength="3" placeholder="XXX" value={cardCVV} onChange={(e)=> setCardCVV(e.target.value)}/>
+            <div id='mm-yy-container'>
 
                 <label for='month' className='card-label'>Expiration date</label>
                 <select id='month' value={cardMonth} onChange={(e)=> setCardMonth(e.target.value)}>
@@ -105,7 +103,15 @@ export default function Cart() {
                     <option value='25'>25</option>
                     <option value='26'>26</option>
                 </select>
+            
+                </div>
+                <div id='cvv-container'>
+                <label className='card-label'>CVV</label>
+                <input id='cvv' className='card-input' maxlength="3" placeholder="XXX" value={cardCVV} onChange={(e)=> setCardCVV(e.target.value)}/>
 
+                </div>
+
+                
                 <button onClick={Processing} id='card-btn'>Check Out</button>
             </form>
         </div>

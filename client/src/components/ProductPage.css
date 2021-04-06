@@ -105,3 +105,39 @@ svg{
     background-color: #f0e8bb ;
     display: inline-flex;
 }
+
+.qty-container input{
+ height: 40px;
+ width: 40px;
+ text-align: center;
+}
+
+#social-container{
+    position: absolute;
+    display: flex;
+    z-index: 999;
+    width: 300px;
+    height: 51px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0 ,0.19), 0 6px 6px rgba(0, 0, 0, 0.23);;
+    padding: 10px;
+    justify-content: space-between;
+    
+}
+
+svg:hover{
+    cursor: pointer;
+}
+
+#close-social:hover{
+    cursor: pointer;
+}
+
+#close-social{
+    font-weight: bold;
+    font-size: 1.2rem;
+    height: 25px;
+    width: 25px;
+    margin-top: 3px;
+   
+}

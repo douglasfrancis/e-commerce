@@ -41,7 +41,7 @@ export default function LineItem( {item, subtotal, setSubtotal}) {
             <img className='line-img' src={item.id == 1 ? white1: img1 }/>
             
             <p>{item.name}</p>
-            <div>
+            <div className='qty-container'>
                 <p className='set-qty' onClick={decrease}>-</p>
                 <input type='number' disabled value={qty} onChange={(e)=>{setQty(e.target.value)} }/>
                 <p className='set-qty' onClick={increase}>+</p>
@@ -50,7 +50,7 @@ export default function LineItem( {item, subtotal, setSubtotal}) {
 
             <h2>£{(linePrice * qty).toFixed(2)}</h2>
 
-            <h2 onClick={clearCart}>X</h2>
+            <h2 id='clear-btn' onClick={clearCart}>x</h2>
         </div>
         </>
     )

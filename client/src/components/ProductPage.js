@@ -7,9 +7,12 @@ import white2 from '../images/white2.png';
 import white3 from '../images/white3.jpg';
 import './ProductPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faSignOutAlt, faShareAlt} from '@fortawesome/free-solid-svg-icons'
+import {faFacebookMessenger, faTwitter, faWhatsapp} from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
 import { Context } from '../Context';
+
+
 
 const database = [
     {
@@ -41,6 +44,7 @@ export default function ProductPage() {
     const [added, setAdded] = useState(false);
     const [qty, setQty] = useState(1);
     const [err, setErr] = useState(null);
+    const [showSocials, setShowSocials] = useState(false);
     const [mainImg, setMainImg] = useState(choice.images.img1);
     const basketItem= {};
     const basketArr = []
@@ -116,7 +120,7 @@ export default function ProductPage() {
                          </div>
                 </div>
 
-                <div>
+                <div className='qty-container'>
                     <p className='set-qty' onClick={decrease}>-</p>
                     <input type='number' disabled value={qty} onChange={(e)=>{setQty(e.target.value)} }/>
                     <p className='set-qty' onClick={increase}>+</p>
@@ -125,7 +129,14 @@ export default function ProductPage() {
                 {added ? <h2>Added to Basket</h2> : <button onClick={addToBasket} id='cart-btn' className='product-btn'>Add to Cart</button>}
 
                 <Link to='/cart'><button id='basket-btn' className='product-btn'>View Basket</button></Link>
+                <FontAwesomeIcon size='lg' onClick={()=>setShowSocials(true)} icon={faShareAlt} />
+                {showSocials && (<div id='social-container'>
+                <FontAwesomeIcon size='2x' icon={faFacebookMessenger} />
+                <FontAwesomeIcon size='2x' icon={faTwitter} />
+                <FontAwesomeIcon size='2x' icon={faWhatsapp} />
 
+                    <p id='close-social' onClick={()=>setShowSocials(false)}>x</p>
+                </div>)}
                 <p id='description'>{choice.description}</p>
             </div>
      

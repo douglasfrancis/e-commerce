@@ -44,7 +44,7 @@ export default function Login() {
                 </view>
                 <view>
                     <FontAwesomeIcon icon={faLock} />
-                    <input placeholder='Password' className='auth-input' value={password} onChange={(e)=> setPassword(e.target.value)} />
+                    <input type='password' placeholder='Password' className='auth-input' value={password} onChange={(e)=> setPassword(e.target.value)} />
                 </view>
                 
                 <input id='auth-check' type="checkbox" />
