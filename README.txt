@@ -10,13 +10,14 @@ React Dependencies
 
     npm i axios react-router-dom @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 
-
 // Start server
-
+    ! Environment variable must be set to connect to MongoDB
+From root directory
     cd server
     nodemon server
 
 // Start React
-
-    cd ../client
+    ! Front end can be viewed without MongoDB connection
+From root directory
+    cd client
     npm start
