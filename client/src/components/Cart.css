@@ -4,6 +4,7 @@
     width: 100vw;
     padding: 3rem;
     z-index: 1;
+    overflow-y: scroll;
 }   
 
 #cart-page h2{
@@ -19,6 +20,7 @@
     
     height: 90vh;
     width: 30vw;
+    min-width: 350px;
     position: absolute;
     top: 5vh;
     right: 5vh !important;
@@ -93,7 +95,7 @@ a{
 .line-item{
     display: flex;
     justify-content: space-between;
-    width: 55vw;
+    width: 50vw;
     border-bottom: 1px solid #dcdce0;
     padding: 2rem 0;
     flex-direction: row;
@@ -190,3 +192,49 @@ a{
       margin: 0 1rem;
   }
   
+  @media only screen and (max-width: 1000px) {
+    #subtotal{
+        width: 50%;
+    }
+
+    .line-item{
+        
+        width: 45%;
+       
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    #subtotal{
+        position: absolute;
+        top: 50vh;
+        width: 90%;
+       
+    }
+
+    .line-item{
+        position: absolute;
+        top: 15vh;
+        height: auto;
+        width: 90%;
+        left: 5%;
+       
+       
+    }
+    #card-container{
+        
+        width: 90vw;
+        left: 5vw !important;
+        min-height: 500px;
+        overflow-y: scroll;
+        top: 70vh;
+        min-width: unset;
+    }
+    #processor{
+        position: fixed;
+        width: 80%;
+        left: 10%;
+    }
+    #mastercard{
+        display: none;
+    }
+  }

@@ -8,7 +8,7 @@ import white3 from '../images/white3.jpg';
 import './ProductPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faSignOutAlt, faShareAlt} from '@fortawesome/free-solid-svg-icons'
-import {faFacebookMessenger, faTwitter, faWhatsapp} from '@fortawesome/free-brands-svg-icons'
+import {faFacebook, faTwitter, faWhatsapp} from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
 import { Context } from '../Context';
 
@@ -131,9 +131,9 @@ export default function ProductPage() {
                 <Link to='/cart'><button id='basket-btn' className='product-btn'>View Basket</button></Link>
                 <FontAwesomeIcon size='lg' onClick={()=>setShowSocials(true)} icon={faShareAlt} />
                 {showSocials && (<div id='social-container'>
-                <FontAwesomeIcon size='2x' icon={faFacebookMessenger} />
-                <FontAwesomeIcon size='2x' icon={faTwitter} />
-                <FontAwesomeIcon size='2x' icon={faWhatsapp} />
+                <a target="_blank" href='https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/'><FontAwesomeIcon size='2x' icon={faFacebook} /></a>
+                <a target="_blank" href='https://twitter.com/intent/tweet?url=http://localhost:3000/'><FontAwesomeIcon size='2x' icon={faTwitter} /></a>
+                <a target="_blank" href='https://web.whatsapp.com/send?text=http://localhost:3000/'><FontAwesomeIcon size='2x' icon={faWhatsapp} /></a>
 
                     <p id='close-social' onClick={()=>setShowSocials(false)}>x</p>
                 </div>)}
@@ -141,7 +141,7 @@ export default function ProductPage() {
             </div>
      
                  
- 
+           
         </div>
         
 

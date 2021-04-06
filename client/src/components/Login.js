@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './Auth.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import ErrorMsg from './ErrorMsg';
-import { Context } from '../Context';
+
 
 export default function Login() {
     
@@ -13,6 +11,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [redirect, setRedirect] = useState(false);
     const [err, setErr] = useState(null);
+    const [inlineErr, setInlineErr] = useState(null);
 
 
     async function loginUser(e){
@@ -32,6 +31,21 @@ export default function Login() {
             setErr(error.response.data.msg)
           });
     };
+
+    function hasWhiteSpace(e) {
+    setUserName(e.target.value);
+    let username = e.target.value;
+    var reWhiteSpace = new RegExp(/\s/);
+
+    // Check for white space
+    if (reWhiteSpace.test(username)) {
+        setInlineErr('White Space')
+    } else {
+        setInlineErr(null)
+    }
+
+    
+}
     return (
         <div className="auth-page">
             {redirect ? (<Redirect push to="/"/>) : null }
@@ -39,12 +53,15 @@ export default function Login() {
             <form>
                 <h2>Sign In</h2>
                 <view>
-                    <FontAwesomeIcon icon={faUser} />
-                    <input placeholder="Username or email address" className='auth-input' value={userName} onChange={(e)=> setUserName(e.target.value)} />
+                    
+                    <input placeholder="Username or email address" className='auth-input' value={userName} onChange={(e)=> hasWhiteSpace(e)}/>
+                    
+                    {inlineErr && <p id='inline-err'>Username should not contain spaces</p> }
                 </view>
                 <view>
-                    <FontAwesomeIcon icon={faLock} />
+                    
                     <input type='password' placeholder='Password' className='auth-input' value={password} onChange={(e)=> setPassword(e.target.value)} />
+                    
                 </view>
                 
                 <input id='auth-check' type="checkbox" />
@@ -55,7 +72,6 @@ export default function Login() {
                 <p className='auth-p'>I forgot my password</p>
                 <p className='auth-p'>Resend verification email</p>
 
-                <p>Don't have an account? <Link to='/register'>Register</Link></p>
             </form>
         </div>
     )
